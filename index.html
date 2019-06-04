@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
     <!-- <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/images/">
     <link rel="stylesheet" href="assets/javascript/game.js"> -->
@@ -30,30 +30,31 @@
     var CorrectText = document.getElementById("Correct-text");
     var LetterChosenText = document.getElementById("LettersChosen-text");
 
-        function reset(){
-            RemainingGuess = 10;
-        }
     document.onkeyup = function(event){
-        var computerGuess = computerchoices[Math.floor(Math.random() * computerChoices.length)];
         var userchoice = event.key;
+        var computerGuess = computerchoices[Math.floor(Math.random() * computerchoices.length)];
+        
         
         if(userchoice === computerGuess){
-            Correct++
-        } 
+            Correct++;
+        }
         
-        else(){
+        else{
             Incorrect++;
             RemainingGuess--;
         }
- 
+        
         if(RemainingGuess === 0){
             reset()
             losses++
         }
-    UserchoiceText.text = "Your guess: " + userchoice;
-    IncorrectText = "Incorrect: " + Incorrect;
-    CorrectText = "Correct: " + Correct;
-        }
+        UserchoiceText.text = "Your guess: " + userchoice;
+        IncorrectText = "Incorrect: " + Incorrect;
+        CorrectText = "Correct: " + Correct;
+    }
+    function reset(){
+        RemainingGuess = 10;
+    }
     
     </script>
     
