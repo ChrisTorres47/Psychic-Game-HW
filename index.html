@@ -25,8 +25,9 @@
     var Incorrect = 0;
     var losses = 0;
     var RemainingGuess = 10;
+    var LetterChosen = [""]
     var UserchoiceText = document.getElementById("Userchoice-text");
-    var IncorrectText = document.getElementById("Inncorrect-text");
+    var IncorrectText = document.getElementById("Incorrect-text");
     var CorrectText = document.getElementById("Correct-text");
     var LetterChosenText = document.getElementById("LettersChosen-text");
 
@@ -34,24 +35,34 @@
         var userchoice = event.key;
         var computerGuess = computerchoices[Math.floor(Math.random() * computerchoices.length)];
         
+        if((userchoice === "q") || (userchoice === "w") || (userchoice === "e") ||  (userchoice === "r") || (userchoice === "t") || (userchoice === "y") || (userchoice === "u") || (userchoice === "i") || (userchoice === "o") || (userchoice === "p") || (userchoice === "a") || (userchoice === "s") || (userchoice === "d") || (userchoice === "f") || (userchoice === "g") || (userchoice === "h") || (userchoice === "j") || (userchoice === "k") || (userchoice === "l") || (userchoice === "z") || (userchoice === "x") || (userchoice === "c") || (userchoice === "v") ||  (userchoice === "b") ||  (userchoice === "n") || (userchoice === "m")){
+            
+        }
+        else{
+            alert("Please select a letter key")
+        }
         
         if(userchoice === computerGuess){
             Correct++;
-        }
-        
-        else{
-            Incorrect++;
-            RemainingGuess--;
-        }
-        
-        if(RemainingGuess === 0){
             reset()
-            losses++
         }
-        UserchoiceText.text = "Your guess: " + userchoice;
-        IncorrectText = "Incorrect: " + Incorrect;
-        CorrectText = "Correct: " + Correct;
-    }
+        
+            else{
+                Incorrect++;
+                RemainingGuess--;
+                
+            }
+            
+            if(RemainingGuess === 0){
+                reset()
+                losses++
+            }
+            UserchoiceText.innerHTML = "Your guess: " + userchoice;
+            IncorrectText.innerHTML = "Incorrect: " + Incorrect;
+            CorrectText.innerHTML = "Correct: " + Correct;
+            LetterChosenText.innerHTML = "You've picked: " + LetterChosen;
+        }
+        
     function reset(){
         RemainingGuess = 10;
     }
